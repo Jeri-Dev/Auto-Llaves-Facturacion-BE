@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  document  String   @unique
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+
+  invoices Invoice[]
+
+  @@map("customers")
+}
+
+model Invoice {
+  id           Int       @id @default(autoincrement())
+  customerId   Int?
+  customer     Customer? @relation(fields: [customerId], references: [id])
+  customerName String?
+  type         String
+  document     String?
+  items        Json
+  subtotal     Float
+  taxes        Float
+  total        Float
+  createdAt    DateTime  @default(now())
+
+  @@map("invoices")
+}

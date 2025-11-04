@@ -1,0 +1,7 @@
+export enum InvoiceType {
+  GOVERNMENTAL = 'GOVERNMENTAL',
+  QUOTE = 'QUOTE',
+  ENDCONSUMER = 'ENDCONSUMER',
+  CREDIT = 'CREDIT',
+  BASIC = 'BASIC',
+}
