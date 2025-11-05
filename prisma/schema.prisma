@@ -27,6 +27,7 @@ model Invoice {
   customerName String?
   type         String
   document     String?
+  ncf          String?
   items        Json
   subtotal     Float
   taxes        Float

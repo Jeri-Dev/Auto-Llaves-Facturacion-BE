@@ -50,6 +50,11 @@ export class CreateInvoiceDTO {
   @IsOptional()
   document?: string
 
+  @ApiProperty()
+  @IsString()
+  @IsOptional()
+  ncf?: string
+
   @ApiProperty({ type: [InvoiceItemDTO] })
   @IsArray()
   @ValidateNested({ each: true })

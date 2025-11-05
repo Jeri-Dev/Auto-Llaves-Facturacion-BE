@@ -156,10 +156,6 @@ export class InvoicesService {
           break
       }
 
-      if (ncf) {
-        document = ncf
-      }
-
       const subtotal = data.items.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0,
@@ -173,6 +169,7 @@ export class InvoicesService {
         subtotal,
         taxes,
         total,
+        ncf,
         items: JSON.stringify(data.items),
       })
 

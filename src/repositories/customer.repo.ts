@@ -18,6 +18,7 @@ export class CustomerRepository extends StandardRepository<
 
     if (dto.search) {
       filters.OR = [{ name: { contains: dto.search } }]
+      filters.OR = [{ document: { contains: dto.search } }]
     }
 
     return this.paginate({
