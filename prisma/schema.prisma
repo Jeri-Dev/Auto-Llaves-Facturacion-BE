@@ -35,3 +35,20 @@ model Invoice {
 
   @@map("invoices")
 }
+
+model Company {
+  id                  Int      @id @default(autoincrement())
+  name                String
+  rnc                 String   @unique
+  address             String
+  phoneNumber         String
+  secondPhoneNumber   String?
+  nextGovernmentalNCF String
+  nextCreditNCF       String
+  nextEndConsumerNCF  String
+  nextQuoteNumber     Int      @default(1)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("company")
+}

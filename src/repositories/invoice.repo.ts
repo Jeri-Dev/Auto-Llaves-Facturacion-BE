@@ -14,7 +14,17 @@ export class InvoiceRepository extends StandardRepository<
   }
 
   async pagination(dto: PaginationDTO) {
+    const filters: Prisma.InvoiceWhereInput = {}
+
+    if (dto.search) {
+      filters.OR = [
+        { customerName: { contains: dto.search } },
+        { customer: { name: { contains: dto.search } } },
+      ]
+    }
+
     return this.paginate({
+      where: filters,
       ...dto,
       queryExtension: {
         include: {

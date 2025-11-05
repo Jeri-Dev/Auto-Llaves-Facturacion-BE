@@ -1,27 +1,20 @@
 import { PrismaService } from '@config/prisma'
 import { Injectable } from '@nestjs/common'
-import { Customer, Prisma } from '@prisma/client'
+import { Company } from '@prisma/client'
 import { PaginationDTO } from '@shared/dto/pagination'
 import { StandardRepository } from '@shared/standard/repository'
 
 @Injectable()
-export class CustomerRepository extends StandardRepository<
-  Customer,
-  PrismaService['customer']
+export class CompanyInfoRepository extends StandardRepository<
+  Company,
+  PrismaService['company']
 > {
   constructor(prisma: PrismaService) {
-    super(prisma.customer)
+    super(prisma.company)
   }
 
   async pagination(dto: PaginationDTO) {
-    const filters: Prisma.CustomerWhereInput = {}
-
-    if (dto.search) {
-      filters.OR = [{ name: { contains: dto.search } }]
-    }
-
     return this.paginate({
-      where: filters,
       ...dto,
     })
   }
