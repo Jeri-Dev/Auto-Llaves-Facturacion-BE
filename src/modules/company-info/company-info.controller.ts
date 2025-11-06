@@ -17,7 +17,7 @@ export class CompanyInfoController {
     return this.companyInfoService.createCompanyInfo(dto)
   }
 
-  @Patch('/:id')
+  @Patch('/')
   update(@Body() dto: UpdateCompanyInfoDTO) {
     return this.companyInfoService.updateCompanyInfo(dto)
   }

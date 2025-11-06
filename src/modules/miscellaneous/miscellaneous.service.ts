@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common'
 import { RncService } from '@shared/services/rnc'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class MiscellaneousService {

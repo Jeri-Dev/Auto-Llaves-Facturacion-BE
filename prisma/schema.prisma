@@ -53,3 +53,15 @@ model Company {
 
   @@map("company")
 }
+
+model Inventory {
+  id    Int    @id @default(autoincrement())
+  code  String @unique
+  name  String
+  price Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("inventory")
+}
