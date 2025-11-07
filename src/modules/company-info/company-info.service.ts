@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   InternalServerErrorException,
+  NotFoundException,
 } from '@nestjs/common'
 import { CompanyInfoRepository } from '@repositories/company.repo'
 import { CreateCompanyInfoDTO } from './dto/create-company-info.dto'
@@ -12,15 +13,11 @@ export class CompanyInfoService {
   constructor(private readonly companyInfoRepository: CompanyInfoRepository) {}
 
   async findCompanyInfo() {
-    try {
-      const companyInfo = await this.companyInfoRepository.findLast()
-      if (!companyInfo) {
-        throw new InternalServerErrorException('Company info not found')
-      }
-      return companyInfo
-    } catch (error) {
-      throw new InternalServerErrorException('Error fetching company info')
+    const companyInfo = await this.companyInfoRepository.findLast()
+    if (!companyInfo) {
+      throw new NotFoundException('Company info not found')
     }
+    return companyInfo
   }
 
   async createCompanyInfo(data: CreateCompanyInfoDTO) {

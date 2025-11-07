@@ -1,5 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsInt, IsNotEmpty, IsOptional, IsString, Min } from 'class-validator'
+import {
+  IsDate,
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Min,
+} from 'class-validator'
 
 export class CreateCompanyInfoDTO {
   @ApiProperty({ example: 'Auto Llaves S.A.' })
@@ -32,15 +39,30 @@ export class CreateCompanyInfoDTO {
   @IsNotEmpty()
   nextGovernmentalNCF: string
 
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  nextGovernmentalExpiration: Date
+
   @ApiProperty({ example: 'B0200000001' })
   @IsString()
   @IsNotEmpty()
   nextCreditNCF: string
 
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  nextCreditExpiration: Date
+
   @ApiProperty({ example: 'B0300000001' })
   @IsString()
   @IsNotEmpty()
   nextEndConsumerNCF: string
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  nextEndConsumerExpiration: Date
 
   @ApiProperty({ example: 1, default: 1 })
   @IsInt()

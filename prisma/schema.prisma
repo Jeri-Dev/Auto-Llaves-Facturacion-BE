@@ -38,18 +38,21 @@ model Invoice {
 }
 
 model Company {
-  id                  Int      @id @default(autoincrement())
-  name                String
-  rnc                 String   @unique
-  address             String
-  phoneNumber         String
-  secondPhoneNumber   String?
-  nextGovernmentalNCF String
-  nextCreditNCF       String
-  nextEndConsumerNCF  String
-  nextQuoteNumber     Int      @default(1)
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id                         Int      @id @default(autoincrement())
+  name                       String
+  rnc                        String   @unique
+  address                    String
+  phoneNumber                String
+  secondPhoneNumber          String?
+  nextGovernmentalNCF        String
+  nextGovernmentalExpiration DateTime
+  nextCreditNCF              String
+  nextCreditExpiration       DateTime
+  nextEndConsumerNCF         String
+  nextEndConsumerExpiration  DateTime
+  nextQuoteNumber            Int      @default(1)
+  createdAt                  DateTime @default(now())
+  updatedAt                  DateTime @updatedAt
 
   @@map("company")
 }
