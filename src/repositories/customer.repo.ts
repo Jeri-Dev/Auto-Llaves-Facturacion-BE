@@ -17,8 +17,10 @@ export class CustomerRepository extends StandardRepository<
     const filters: Prisma.CustomerWhereInput = {}
 
     if (dto.search) {
-      filters.OR = [{ name: { contains: dto.search } }]
-      filters.OR = [{ document: { contains: dto.search } }]
+      filters.OR = [
+        { name: { contains: dto.search } },
+        { document: { contains: dto.search } },
+      ]
     }
 
     return this.paginate({

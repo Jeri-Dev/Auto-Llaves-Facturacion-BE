@@ -24,6 +24,7 @@ export class InventoryRepository extends StandardRepository<
     }
 
     return this.paginate({
+      where: filters,
       ...pagination,
     })
   }
