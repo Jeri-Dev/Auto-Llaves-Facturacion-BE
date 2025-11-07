@@ -179,7 +179,6 @@ export class InvoicesService {
 
       return newInvoice
     } catch (error) {
-      console.log(error)
       if (error instanceof BadRequestException) {
         throw error
       }
