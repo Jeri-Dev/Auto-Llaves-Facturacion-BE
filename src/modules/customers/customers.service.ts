@@ -45,6 +45,9 @@ export class CustomersService {
 
       return await this.customerRepository.create(data)
     } catch (error) {
+      if (error instanceof BadRequestException) {
+        throw error
+      }
       throw new InternalServerErrorException('Error creating customer')
     }
   }

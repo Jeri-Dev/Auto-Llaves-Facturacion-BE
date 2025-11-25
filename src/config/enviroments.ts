@@ -1,8 +1,13 @@
+import { existsSync } from 'fs'
+
+// Solo cargar .env si existe (desarrollo local)
+if (existsSync('.env')) {
+  process.loadEnvFile()
+}
+
 export const NODE_ENV = String(process.env.NODE_ENV ?? 'PRODUCTION') as
   | 'PRODUCTION'
   | 'DEVELOPMENT'
-
-process.loadEnvFile()
 
 export const PORT = Number(process.env.PORT ?? 4000)
 
