@@ -9,15 +9,30 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
-    const adapter = new PrismaLibSQL({
-      url: TURSO_DATABASE_URL,
-      authToken: TURSO_AUTH_TOKEN,
-    })
+    // Use LibSQL adapter only if a valid Turso URL is provided.
+    const hasTursoUrl = Boolean(
+      TURSO_DATABASE_URL && TURSO_DATABASE_URL !== 'undefined',
+    )
 
-    super({
-      adapter,
-      errorFormat: 'pretty',
-    })
+    if (hasTursoUrl) {
+      const adapter = new PrismaLibSQL({
+        url: TURSO_DATABASE_URL,
+        authToken:
+          TURSO_AUTH_TOKEN && TURSO_AUTH_TOKEN !== 'undefined'
+            ? TURSO_AUTH_TOKEN
+            : undefined,
+      })
+
+      super({
+        adapter,
+        errorFormat: 'pretty',
+      })
+    } else {
+      // Fallback to local SQLite (datasource provider = "sqlite" in schema.prisma)
+      super({
+        errorFormat: 'pretty',
+      })
+    }
   }
 
   async onModuleInit() {

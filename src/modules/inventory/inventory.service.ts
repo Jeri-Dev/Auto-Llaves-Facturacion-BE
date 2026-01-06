@@ -18,7 +18,7 @@ export class InventoryService {
       const data = await this.inventoryRepository.pagination(pagination)
       return data
     } catch {
-      return new InternalServerErrorException()
+      return new InternalServerErrorException('Error fetching inventory')
     }
   }
 

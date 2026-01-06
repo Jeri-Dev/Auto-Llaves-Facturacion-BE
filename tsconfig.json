@@ -21,42 +21,18 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@shared/*": [
-        "src/shared/*"
-      ],
-      "@modules/*": [
-        "src/modules/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@interfaces/*": [
-        "src/interfaces/*"
-      ],
-      "@contracts/*": [
-        "src/contracts/*"
-      ],
-      "@errors/*": [
-        "src/errors/*"
-      ],
-      "@database/*": [
-        "src/database/*"
-      ],
-      "@decorators/*": [
-        "src/decorators/*"
-      ],
-      "@repositories/*": [
-        "src/repositories/*"
-      ],
-      "@typescript/*": [
-        "src/typescript/*"
-      ],
-      "@messages/*": [
-        "src/messages/*"
-      ],
-      "@events/*": [
-        "src/events/*"
-      ],
+      "@shared/*": ["src/shared/*"],
+      "@modules/*": ["src/modules/*"],
+      "@config/*": ["src/config/*"],
+      "@interfaces/*": ["src/interfaces/*"],
+      "@contracts/*": ["src/contracts/*"],
+      "@errors/*": ["src/errors/*"],
+      "@database/*": ["src/database/*"],
+      "@decorators/*": ["src/decorators/*"],
+      "@repositories/*": ["src/repositories/*"],
+      "@typescript/*": ["src/typescript/*"],
+      "@messages/*": ["src/messages/*"],
+      "@events/*": ["src/events/*"]
     }
   },
   "include": [
@@ -65,6 +41,6 @@
     "types/**/*.d.ts",
     "src/app.service.ts",
     "test/**/*.ts",
-    "src/config/drizzle.mts",
-  ],
+    "src/config/drizzle.mts"
+  ]
 }
