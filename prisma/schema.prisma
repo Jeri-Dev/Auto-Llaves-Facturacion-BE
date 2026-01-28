@@ -68,3 +68,14 @@ model Inventory {
 
   @@map("inventory")
 }
+
+model Sales {
+  id        Int      @id @default(autoincrement())
+  item      String
+  quantity  Int
+  price     Float
+  total     Float
+  createdAt DateTime @default(now())
+
+  @@map("sales")
+}

@@ -9,6 +9,7 @@ import { CompanyInfoModule } from './modules/company-info/company-info.module'
 import { InventoryModule } from './modules/inventory/inventory.module'
 import { CompanyGuard } from './company.guard'
 import { CompanyInfoRepository } from '@repositories/company.repo'
+import { SalesModule } from './modules/sales/sales.module';
 
 @Global()
 @Module({
@@ -21,6 +22,7 @@ import { CompanyInfoRepository } from '@repositories/company.repo'
     MiscellaneousModule,
     CompanyInfoModule,
     InventoryModule,
+    SalesModule,
   ],
 })
 export class AppModule {}

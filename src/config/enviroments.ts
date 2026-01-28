@@ -12,6 +12,7 @@ export const NODE_ENV = String(process.env.NODE_ENV ?? 'PRODUCTION') as
 export const PORT = Number(process.env.PORT ?? 4000)
 
 export const TURSO_DATABASE_URL = String(process.env.TURSO_DATABASE_URL)
+console.log('TURSO_DATABASE_URL:', TURSO_DATABASE_URL)
 export const TURSO_AUTH_TOKEN = String(process.env.TURSO_AUTH_TOKEN)
 
 export const APP_CLIENT_HOST = String(process.env.APP_CLIENT_HOST)

@@ -1,3 +1,4 @@
+import { SalesRepository } from '@repositories/sales.repo'
 import {
   BadRequestException,
   HttpException,
@@ -10,6 +11,7 @@ import { CreateInvoiceDTO } from './dto/create-invoice.dto'
 import { CustomerRepository } from '@repositories/customer.repo'
 import { CompanyInfoRepository } from '@repositories/company.repo'
 import { InvoiceType } from 'src/enums/invoice'
+import { Sales } from '@prisma/client'
 
 @Injectable()
 export class InvoicesService {
@@ -17,6 +19,7 @@ export class InvoicesService {
     private readonly invoiceRepository: InvoiceRepository,
     private readonly customerRepository: CustomerRepository,
     private readonly companyInfoRepository: CompanyInfoRepository,
+    private readonly salesRepository: SalesRepository,
   ) {}
 
   async findAllInvoices(dto: PaginationDTO) {
@@ -162,6 +165,13 @@ export class InvoicesService {
       const taxes = subtotal * (data.type === InvoiceType.BASIC ? 0 : 0.18)
       const total = subtotal + taxes
 
+      const sales = data.items.map((item) => ({
+        item: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        total: item.price * item.quantity,
+      }))
+
       const newInvoice = await this.invoiceRepository.create({
         ...data,
         document,
@@ -175,6 +185,8 @@ export class InvoicesService {
       if (Object.keys(updateData).length > 0) {
         await this.companyInfoRepository.update(company.id, updateData)
       }
+
+      await this.salesRepository.createMany(sales)
 
       return newInvoice
     } catch (error) {
