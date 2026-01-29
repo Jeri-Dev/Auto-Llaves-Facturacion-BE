@@ -34,7 +34,10 @@ export class CompanyInfoService {
 
       return await this.companyInfoRepository.create(data)
     } catch (error) {
-      throw new InternalServerErrorException('Error creating company info')
+      console.error(error)
+      throw new InternalServerErrorException(
+        'Hubo un error al guardar los datos',
+      )
     }
   }
 

@@ -59,11 +59,6 @@ export class CreateCompanyInfoDTO {
   @IsNotEmpty()
   nextEndConsumerNCF: string
 
-  @ApiProperty()
-  @IsString()
-  @IsNotEmpty()
-  nextEndConsumerExpiration: Date
-
   @ApiProperty({ example: 1, default: 1 })
   @IsInt()
   @Min(1)
