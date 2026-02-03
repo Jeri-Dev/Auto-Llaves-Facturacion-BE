@@ -119,7 +119,7 @@ export class StandardRepository<
   }
 
   async createMany(data: CleanInput<T>[]): Promise<{ count: number }> {
-    return this.model.createMany({ data, skipDuplicates: true })
+    return this.model.createMany({ data })
   }
 
   async findOne(where: WhereCondition<T>): Promise<T | null> {
